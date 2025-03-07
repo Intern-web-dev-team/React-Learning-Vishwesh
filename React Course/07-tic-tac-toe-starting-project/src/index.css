@@ -19,9 +19,9 @@ html {
 
 body {
   background: radial-gradient(
-      circle at top,
-      rgba(241, 210, 70, 0.98),
-      rgba(250, 176, 103, 0.87)
+    circle at top,
+      rgba(249, 115, 22, 0.98),  /* Orange */
+      rgba(239, 68, 68, 0.87)    /* Red */
     ),
     url('bg-pattern-dark.png');
   background-repeat: repeat;
@@ -75,7 +75,7 @@ h1 {
 }
 
 #players.highlight-player li.active {
-  border-color: #f6e35a;
+  border-color: blue;
   animation: pulse 2s infinite ease-in-out;
 }
 
