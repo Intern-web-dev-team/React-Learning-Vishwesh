@@ -1,9 +1,48 @@
+import {isEmail,isNotEmpty,hasMinLength,isEqualToOtherValue} from "../util/validation";
+
 export default function Signup() {
+  function signupAction(formData){
+    const Email = formData.get("email");
+    const Password = formData.get("password");
+    const ConfirmPassword = formData.get("confirm-password");
+    const FirstName = formData.get("first-name");
+    const LastName = formData.get("last-name");
+    const Role = formData.get("role");
+    const AcquisitionChannel = formData.getAll("acquisition");
+    const Terms = formData.get("terms");
+
+    let errors = [];
+
+    //Validation checks
+    if(!isEmail(Email)){
+      errors.push("Enter valid Email");
+    }
+    if (!hasMinLength(Password, 6)) {
+      errors.push("Password must be at least 6 characters long");
+    }
+    if(!isEqualToOtherValue(Password, ConfirmPassword)){
+      errors.push("Passwords do not match");
+    }
+    if(!isNotEmpty(FirstName) || !isNotEmpty(LastName)){
+      errors.push("First Name and Last Name are required");
+    }
+    if(!isNotEmpty(Role)){
+      errors.push("Role is required");
+    }
+    if(AcquisitionChannel.length === 0){
+      errors.push("Select an acquisition channel");
+    }
+    if(!Terms){
+      errors.push("Accept terms and conditions");
+    }
+
+    console.log(errors);
+  }
   return (
-    <form>
+    <form action={signupAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
-
+  
       <div className="control">
         <label htmlFor="email">Email</label>
         <input id="email" type="email" name="email" />
