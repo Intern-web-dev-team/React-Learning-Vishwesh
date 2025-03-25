@@ -19,11 +19,14 @@ export const counterSlice = createSlice({
     },
     reset: state => {
         state.value = 0;
+    },
+    toggleTheme: (state) => {
+        state.isDarkMode = !state.isDarkMode
       },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, reset } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, reset, toggleTheme } = counterSlice.actions
 
 export default counterSlice.reducer
